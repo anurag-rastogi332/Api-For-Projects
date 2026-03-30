@@ -1,0 +1,108 @@
+<style>
+    /* ===== Contact Section ===== */
+#contact {
+  background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+  padding: 60px 20px;
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 50px auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Heading */
+#contact h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#contact h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #ff4081;
+  margin: 10px auto 0;
+  border-radius: 5px;
+}
+
+/* Form styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Inputs and textarea */
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: 0.3s ease;
+  outline: none;
+  background: white;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff4081;
+  box-shadow: 0 0 8px rgba(255, 64, 129, 0.2);
+}
+
+/* Button */
+.contact-form button {
+  background: #ff4081;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.contact-form button:hover {
+  background: #f50057;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 64, 129, 0.3);
+}
+
+/* Success/Error Messages */
+#contact p {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+a{
+    text-decoration: none;
+    color: white;
+    background-color: #b1315c;
+    padding: 4px;
+    border-radius: 8px;
+
+
+}
+
+</style>
+<section id="contact">
+    <h2>Contact Me</h2>
+    <% if(error){ %>
+        <p style="color:red; text-align:center;"><%= error %></p>
+    <% } %>
+    <% if(success){ %>
+        <p style="color:green; text-align:center;"><%= success %></p>
+    <% } %>
+    <form class="contact-form" action="/contact" method="POST">
+        <input type="text" name="name" placeholder="Your Name" value="<%= name %>" required>
+        <input type="email" name="email" placeholder="Your Email" value="<%= email %>" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+<a href="/messages" target="_blank">show all messages</a>

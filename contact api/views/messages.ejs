@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Contact Messages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+
+        table th,
+        table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        table th {
+            background: #2575fc;
+            color: white;
+        }
+
+        table tr:hover {
+            background: #f1f1f1;
+        }
+
+        p.no-messages {
+            text-align: center;
+            font-size: 1.2rem;
+            padding: 30px 0;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2575fc;
+            color: white;
+            margin-top: 50px;
+        }
+
+        @media(max-width:768px) {
+
+            table th,
+            table td {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>All Contact Messages</h1>
+    </header>
+
+    <div class="container">
+        <% if(messages.length===0){ %>
+            <p class="no-messages">No messages found.</p>
+            <% } else { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% messages.forEach(msg=> { %>
+                            <tr>
+                                <td>
+                                    <%= msg.name %>
+                                </td>
+                                <td>
+                                    <%= msg.email %>
+                                </td>
+                                <td>
+                                    <%= msg.message %>
+                                </td>
+                                <td>
+                                    <%= new Date(msg.date).toLocaleString() %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } %>
+    </div>
+
+    <footer>
+        &copy; <%= new Date().getFullYear() %> My Portfolio. All Rights Reserved.
+    </footer>
+</body>
+
+</html>
